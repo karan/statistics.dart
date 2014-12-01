@@ -1,4 +1,4 @@
-part of startistics;
+part of statistics;
 
 
 /// Return a of the given numeric data.

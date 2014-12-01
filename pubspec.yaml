@@ -4,3 +4,5 @@ author: Karan Goel <karan@goel.io>
 description: Functions for calculating mathematical statistics of numeric data.
 homepage: https://github.com/karan/statistics.dart
 documentation: https://github.com/karan/statistics.dart
+dependencies:
+  unittest: any
