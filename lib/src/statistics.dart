@@ -76,3 +76,33 @@ num median_high(List data) {
 
   return data[halfN];
 }
+
+
+/// Return the 50th percentile (median) of grouped continuous data
+/// Optional argument [interval] represents the class interval, and defaults to
+/// 1. Changing the class interval naturally will change the interpolated
+/// 50th percentile value.
+/// If [data] is empty, [StatisticsException] will be thrown.
+num median_grouped(List data, {num interval:1}) {
+  data.sort();
+  int n = data.length;
+  int halfN = n ~/ 2;
+
+  if (n < 1) {
+    throw new StatisticsException('mean requires at least one data point.');
+  } else if (n == 1) {
+    return data[0];
+  }
+
+  num x = data[halfN];
+  num L = x - interval / 2;
+  int cf = data.indexOf(x);
+  int f = 0;
+  data.forEach((v) {
+    if (v == x) {
+      f++;
+    }
+  });
+
+  return L + interval * (n / 2 - cf) / f;
+}
