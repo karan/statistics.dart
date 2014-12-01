@@ -1,6 +1,8 @@
 statistics.dart
 ===============
 
+[![Build Status](https://drone.io/github.com/karan/statistics.dart/status.png)](https://drone.io/github.com/karan/statistics.dart/latest)
+
 Functions for calculating mathematical statistics of numeric data.
 
 **Note**: These functions support `int` and `double` `List`s.
