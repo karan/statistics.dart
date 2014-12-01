@@ -3,13 +3,36 @@ statistics.dart
 
 Functions for calculating mathematical statistics of numeric data.
 
-**Note**: Unless explicitly noted otherwise, these functions support `int` and `double`.
+**Note**: These functions support `int` and `double` `List`s.
 
 ## Usage
 
-\<install instructions\>
+### 1. Depend on it
 
-## Averages and central measures
+In your `pubspec.yaml`, add:
+
+    dependencies:
+      statistics: ">=0.01"
+
+### 2. Install it
+
+Run from your command line:
+
+    $ pub get
+
+Alternatively, your editor might support pub. Check the docs for your editor to learn more.
+
+### 3. Import it
+
+In your Dart code:
+
+    import 'package:statistics/statistics.dart';
+
+### 4. Use it
+
+    print(mean([1, 2, 3, 4]));
+
+## Supported methods
 
 | Method | Description |
 | ------ | ----------- |
