@@ -61,3 +61,18 @@ num median_low(List data) {
     return data[halfN - 1];
   }
 }
+
+
+/// Return the high median of numeric data
+/// If [data] is empty, [StatisticsException] will be thrown.
+num median_high(List data) {
+  data.sort();
+  int n = data.length;
+  int halfN = (n ~/ 2);
+
+  if (n < 1) {
+    throw new StatisticsException('mean requires at least one data point.');
+  }
+
+  return data[halfN];
+}
