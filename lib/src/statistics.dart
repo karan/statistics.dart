@@ -43,3 +43,21 @@ num median(List data) {
     return (data[halfN - 1] + data[halfN]) / 2;
   }
 }
+
+
+/// Return the low median of numeric data
+/// If [data] is empty, [StatisticsException] will be thrown.
+num median_low(List data) {
+  data.sort();
+  int n = data.length;
+  int halfN = (n ~/ 2);
+
+  if (n < 1) {
+    throw new StatisticsException('mean requires at least one data point.');
+  }
+  if (n % 2 == 1) {
+    return data[halfN];
+  } else {
+    return data[halfN - 1];
+  }
+}
