@@ -83,7 +83,7 @@ num median_high(List data) {
 /// 1. Changing the class interval naturally will change the interpolated
 /// 50th percentile value.
 /// If [data] is empty, [StatisticsException] will be thrown.
-num median_grouped(List data, {num interval:1}) {
+num median_grouped(List data, [num interval = 1]) {
   data.sort();
   int n = data.length;
   int halfN = n ~/ 2;
