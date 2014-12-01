@@ -45,8 +45,25 @@ void testMean() {
   });
 }
 
+
+void testMedian() {
+  test({
+    'method': median,
+    'args':[],
+    'expect': {
+      []: 'StatisticsException',
+      [1, 2, 3]: 2,
+      [-1, -2, -3]: -2,
+      [1, 1, 1, 1]: 1,
+      [1, 2, 3, 1]: 1.5
+    }
+  });
+}
+
+
 void main() {
   testMean();
+  testMedian();
 
   print('-------------------------------------');
   print('All tests complete.');
