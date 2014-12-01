@@ -3,6 +3,9 @@ library statistics_test;
 import 'package:statistics/statistics.dart';
 
 
+const double DELTA = 0.0001;
+
+
 void test(Map options) {
   List args = options['args'];
 
@@ -15,7 +18,7 @@ void test(Map options) {
     var result;
     try {
       result = Function.apply(options['method'], args);
-      if (result != expected) {
+      if (((expected - result).abs() > DELTA)) {
         throw new Exception('$f($args) failed but should have passed');
       }
     } on StatisticsException {
@@ -35,11 +38,17 @@ void testMean() {
     'args':[],
     'expect': {
       []: 'StatisticsException',
-      [1, 2, 3]: 2
+      [1, 2, 3]: 2,
+      [1.0, 1.5, 1.6]: 1.366666,
+      [1.0, -1.0, 2.0, -2.0]: 0
     }
   });
 }
 
 void main() {
   testMean();
+
+  print('-------------------------------------');
+  print('All tests complete.');
+  print('-------------------------------------');
 }
