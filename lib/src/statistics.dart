@@ -13,6 +13,20 @@ num _sum(List data, [num start=0]) {
 }
 
 
+/// Return a Map with <key, count> for each [key] in passed list.
+Map _count(List data) {
+  Map ret = new SplayTreeMap();
+  for (num v in data) {
+    if (ret.containsKey(v)) {
+      ret[v]++;
+    } else {
+      ret[v] = 0;
+    }
+  }
+  return ret;
+}
+
+
 /// Return the sample arithmetic mean of [data].
 /// If [data] is empty, [StatisticsException] will be thrown.
 num mean(List data) {
@@ -35,7 +49,7 @@ num median(List data) {
   int halfN = (n ~/ 2);
 
   if (n < 1) {
-    throw new StatisticsException('mean requires at least one data point.');
+    throw new StatisticsException('median requires at least one data point.');
   }
   if (n % 2 == 1) {
     return data[halfN];
@@ -53,7 +67,7 @@ num median_low(List data) {
   int halfN = (n ~/ 2);
 
   if (n < 1) {
-    throw new StatisticsException('mean requires at least one data point.');
+    throw new StatisticsException('median_low requires at least one data point.');
   }
   if (n % 2 == 1) {
     return data[halfN];
@@ -71,7 +85,7 @@ num median_high(List data) {
   int halfN = (n ~/ 2);
 
   if (n < 1) {
-    throw new StatisticsException('mean requires at least one data point.');
+    throw new StatisticsException('median_high requires at least one data point.');
   }
 
   return data[halfN];
@@ -89,7 +103,7 @@ num median_grouped(List data, [num interval = 1]) {
   int halfN = n ~/ 2;
 
   if (n < 1) {
-    throw new StatisticsException('mean requires at least one data point.');
+    throw new StatisticsException('median_grouped requires at least one data point.');
   } else if (n == 1) {
     return data[0];
   }
@@ -105,4 +119,14 @@ num median_grouped(List data, [num interval = 1]) {
   });
 
   return L + interval * (n / 2 - cf) / f;
+}
+
+
+/// Return the most common data point from discrete or nominal data.
+num mode(List data) {
+  Map counts = _count(data);
+  if (counts.keys.length < 1) {
+    throw new StatisticsException('mode requires at least one data point.');
+  }
+  return counts.values.first;
 }
