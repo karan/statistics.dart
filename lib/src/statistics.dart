@@ -15,12 +15,12 @@ num _sum(List data, [num start=0]) {
 
 /// Return a Map with <key, count> for each [key] in passed list.
 Map _count(List data) {
-  Map ret = new SplayTreeMap();
+  Map ret = new Map();
   for (num v in data) {
     if (ret.containsKey(v)) {
       ret[v]++;
     } else {
-      ret[v] = 0;
+      ret[v] = 1;
     }
   }
   return ret;
@@ -128,5 +128,13 @@ num mode(List data) {
   if (counts.keys.length < 1) {
     throw new StatisticsException('mode requires at least one data point.');
   }
-  return counts.values.first;
+
+  num max_key, max_val;
+  for (num k in counts.keys) {
+    if (counts[k] > k) {
+      max_key = k;
+      max_val = counts[k];
+    }
+  }
+  return max_key;
 }

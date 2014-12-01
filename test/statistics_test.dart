@@ -112,12 +112,26 @@ void testMedianGrouped() {
 }
 
 
+void testMode() {
+  test({
+    'method': mode,
+    'args':[],
+    'expect': {
+      []: 'StatisticsException',
+      [1, 1, 2, 3, 1]: 1,
+      [1, 1, 2, 3, 3, 3, 3, 4]: 3
+    }
+  });
+}
+
+
 void main() {
   testMean();
   testMedian();
   testMedianLow();
   testMedianHigh();
   testMedianGrouped();
+  testMode();
 
   print('-------------------------------------');
   print('All tests complete.');
