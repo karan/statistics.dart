@@ -61,9 +61,25 @@ void testMedian() {
 }
 
 
+void testMedianLow() {
+  test({
+    'method': median_low,
+    'args':[],
+    'expect': {
+      []: 'StatisticsException',
+      [1, 2, 3]: 2,
+      [-1, -2, -3]: -2,
+      [1, 1, 1, 1]: 1,
+      [1, 2, 3, 1]: 1
+    }
+  });
+}
+
+
 void main() {
   testMean();
   testMedian();
+  testMedianLow();
 
   print('-------------------------------------');
   print('All tests complete.');
